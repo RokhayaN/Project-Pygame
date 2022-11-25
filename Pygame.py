@@ -7,5 +7,7 @@ class Character:
 
 #creating instances of our class 
 
-Hulk = Character('hulk', 10)
+Hulk = Character("hulk", 10)
 Batman = Character("batman", 8)
+
+
