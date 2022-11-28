@@ -19,10 +19,14 @@ class Vilain(Character):
 Heroes = ["Hulk", "Batman", "Spiderman"]
 Vilains = ["Goblin","Zombie","Monster"]
 
-#creating instances of our class 
+#creating instances of our subclasses Hero and Vilain
 
 Hulk = Hero("hulk", 10)
 Batman = Hero("batman", 8)
 Superman = Hero("Superman", 9)
 
 
+Goblin = Vilain("goblin",9)
+Zombie =  Vilain("zombie",10)
+Monster = Vilain("monster",12)
+ 
