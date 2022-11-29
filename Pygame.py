@@ -7,8 +7,8 @@ class Character:
 
 #creating our methods for actions + user interactivity w/game
     def damageH(self, enemy):
-        self.health -= enemy.attack
-        print(f"{self.name} is hit for {enemy.attack} your new health is {self.health}")
+        enemy.health -= self.attack
+        print(f"{enemy.name} is hit for {self.attack} their new health is {enemy.health}")
 
     
 #Inheriting our parent class - Subclasses Hero and Vilain
@@ -44,6 +44,30 @@ Monster = Vilain("monster",12, 30)
 Heroes = [Hulk,Batman,Superman]
 Vilains = [Goblin, Zombie, Monster]
 
+
+
+while()
+
+
+def displayFightMenu(heroChoice,vilainChoice):
+    fightChoice = input(""" 
+              Press 1 to attack vilain
+              Press 2 to view character stats
+              Press 3 to reset game
+              Press 4 to quit game       
+    -->""")
+    if fightChoice == "1": 
+        heroChoice.damageH(vilainChoice)
+
+    elif fightChoice == "2":
+        heroChoice.printStats()
+    elif heroChoice == "3":
+        GameStart()  
+    elif heroChoice == "4":
+        quit() 
+        
+
+    
 
 
 def GameStart():
@@ -82,6 +106,9 @@ def GameStart():
     print(f"you choose to fight with {vilainChoice.name}")  
     print(f"Let the battle between {heroChoice.name} and {vilainChoice.name} begins")  
 
+    print("Here is our fight menu press any number below to choose an option")
+    displayFightMenu(heroChoice, vilainChoice)
+
 
 
 
@@ -89,7 +116,7 @@ def GameStart():
 
 
 GameStart()
-#create vilian select copy and paste hero select logic
+#create vilian select copy and paste hero select logic 
 #create fight function mennu called fightMenu
 #have methods to attack/damage
 #death logic if hero or enemy.health <0 what happens??
