@@ -7,6 +7,7 @@ class Character:
 
 #creating our methods for actions + user interactivity w/game
     def damageH(self, enemy):
+    
         enemy.health -= self.attack
         print(f"{enemy.name} is hit for {self.attack} their new health is {enemy.health}")
 
@@ -18,7 +19,7 @@ class Hero(Character):
     
     def printStats(self):
         print(f"""
-        name: {self.name}
+        name:   {self.name}
         Attack: {self.attack}
         Health: {self.health}""")
 
@@ -46,27 +47,40 @@ Vilains = [Goblin, Zombie, Monster]
 
 
 
-while()
-
-
 def displayFightMenu(heroChoice,vilainChoice):
-    fightChoice = input(""" 
-              Press 1 to attack vilain
-              Press 2 to view character stats
-              Press 3 to reset game
-              Press 4 to quit game       
-    -->""")
-    if fightChoice == "1": 
-        heroChoice.damageH(vilainChoice)
+    while (vilainChoice.health > 0):
+        fightChoice = ''
+        while fightChoice != 1 or fightChoice != 2 or fightChoice !=3 or fightChoice != 4:
+            fightChoice = input(""" 
+                    Press 1 to attack vilain
+                    Press 2 to view character stats
+                    Press 3 to reset game
+                    Press 4 to quit game       
+            -->""")
 
-    elif fightChoice == "2":
-        heroChoice.printStats()
-    elif heroChoice == "3":
-        GameStart()  
-    elif heroChoice == "4":
-        quit() 
-        
 
+            if fightChoice == "1": 
+                heroChoice.damageH(vilainChoice)
+                #enemy attacks
+            elif fightChoice == "2":
+                heroChoice.printStats()
+            elif heroChoice == "3":
+                GameStart()  
+            elif heroChoice == "4":
+                quit()
+            else:
+                print('Please only choose from the options below!')
+        print(f"{heroChoice.name} has won the battle!!")
+        #
+        playAgain = input("""Want to play again?  Y/N
+        -->""")
+        if playAgain.upper() == "Y":
+            GameStart()
+        elif playAgain.upper() == "N":
+            print("Good Bye")
+            quit()
+        else:
+            print('Please only choose from the options above')
     
 
 
@@ -116,8 +130,7 @@ def GameStart():
 
 
 GameStart()
-#create vilian select copy and paste hero select logic 
-#create fight function mennu called fightMenu
-#have methods to attack/damage
-#death logic if hero or enemy.health <0 what happens??
-#quit logic/play again logic
+
+##add user control 
+##whenever hero attacks have enemy automatically attack hero back
+#have print hero health
