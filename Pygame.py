@@ -16,7 +16,7 @@ def battleWinner( enemy, hero):
         print(f"{hero.name}, you lost this battle against {enemy.name}")
         quit()
     elif enemy.health < 1 and hero.health > 0:
-        print(f"Congatrulations!! {hero.name}You won this battle against {enemy.name} ")
+        print(f"Congatrulations!! {hero.name}, you won this battle against {enemy.name} ")
 
 #Inheriting our parent class - Subclasses Hero and Vilain
 class Hero(Character):
@@ -32,11 +32,6 @@ class Hero(Character):
 class Vilain(Character):
     def __init__(self, name, attack, health): 
         super().__init__(name,attack,health)
-
-
-#creating instances of our subclasses Hero and Vilain
-
-
 
 
 
@@ -60,7 +55,7 @@ def displayFightMenu(heroChoice,vilainChoice):
         elif fightChoice == "3":
                 GameStart()  
         elif fightChoice == "4":
-            print("Good Bye Hope to see you soon in Smashland")
+            print("Good Bye Hope to see you soon in Smashdown")
             quit()
         else:
             print('Please only choose from the options below!')
@@ -71,7 +66,7 @@ def displayFightMenu(heroChoice,vilainChoice):
     if playAgain.upper() == "Y":
         GameStart()
     elif playAgain.upper() == "N":
-        print("Good Bye.. Hope to see you soon in SmashLand ")
+        print("Good Bye.. Hope to see you soon in Smashdown ")
         quit()
     else:
         print('Please only choose from the options above')
@@ -79,6 +74,9 @@ def displayFightMenu(heroChoice,vilainChoice):
 
 
 def GameStart():
+
+#creating instances of our subclasses Hero and Vilain
+
     Hulk = Hero("hulk", 10, 50)
     Batman = Hero("batman", 8, 40)
     Superman = Hero("superman", 9, 300)
@@ -93,13 +91,20 @@ def GameStart():
 
     Heroes = [Hulk,Batman,Superman]
     Vilains = [Goblin, Zombie, Monster]
-    print(" Welcome to SuperHeroes Smackdown!!")
+    print("*********************************************")
+    print("***  Welcome to SuperHeroes Smackdown!! ***")
+    print("*********************************************")
+    print("\n")
     print("This is the list of playable characters")
+    print("------------------------------------------")
 
     for hero in Heroes:
         print(hero.name)
+
+    print("------------------------------------------")
+    print("\n")
     heroChoice = input("""who do you want to play as?
-    -->""" )
+    --> """ )
     if heroChoice.lower() == 'hulk':
         heroChoice = Hulk
     elif heroChoice.lower() == "batman":
@@ -108,13 +113,16 @@ def GameStart():
         heroChoice = Superman
     else:
         print('Only type in a playable character')
-
+    print("\n")
     print(f"you are now playing as {heroChoice.name}")
-
+    print("\n")
     print(f"watch Out {heroChoice.name}, you are now in a war zone")
+    print("\n")
     print("This is a list of all the ennemies on this land")
+    print("------------------------------------------")
     for vilain in Vilains:
         print(vilain.name)
+    print("------------------------------------------")    
     vilainChoice = input("""who do you want to fight with ?
     -->""")
     if vilainChoice.lower() == "goblin":
@@ -134,12 +142,4 @@ def GameStart():
 
 
 
-
-
-
-
 GameStart()
-
-##add user control 
-##whenever hero attacks have enemy automatically attack hero back
-#have print hero health
