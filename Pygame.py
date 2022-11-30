@@ -11,7 +11,13 @@ class Character:
         enemy.health -= self.attack
         print(f"{enemy.name} is hit for {self.attack} their new health is {enemy.health}")
 
-    
+def battleWinner( enemy, hero):
+    if hero.health < 1 and enemy.health > 0:
+        print(f"{hero.name}, you lost this battle against {enemy.name}")
+        quit()
+    elif enemy.health < 1 and hero.health > 0:
+        print(f"Congatrulations!! {hero.name}You won this battle against {enemy.name} ")
+
 #Inheriting our parent class - Subclasses Hero and Vilain
 class Hero(Character):
     def __init__(self, name, attack, health): 
@@ -30,28 +36,15 @@ class Vilain(Character):
 
 #creating instances of our subclasses Hero and Vilain
 
-Hulk = Hero("hulk", 10, 50)
-Batman = Hero("batman", 8, 40)
-Superman = Hero("superman", 9, 300)
 
-
-Goblin = Vilain("goblin",9,15)
-Zombie =  Vilain("zombie",10,25)
-Monster = Vilain("monster",12, 30)
- 
-
-#create our Heroes + Vilains object List
-
-Heroes = [Hulk,Batman,Superman]
-Vilains = [Goblin, Zombie, Monster]
 
 
 
 def displayFightMenu(heroChoice,vilainChoice):
     while (vilainChoice.health > 0):
         fightChoice = ''
-        while fightChoice != 1 or fightChoice != 2 or fightChoice !=3 or fightChoice != 4:
-            fightChoice = input(""" 
+        #while fightChoice != 1 or fightChoice != 2 or fightChoice !=3 or fightChoice != 4:
+        fightChoice = input(""" 
                     Press 1 to attack vilain
                     Press 2 to view character stats
                     Press 3 to reset game
@@ -59,34 +52,50 @@ def displayFightMenu(heroChoice,vilainChoice):
             -->""")
 
 
-            if fightChoice == "1": 
-                heroChoice.damageH(vilainChoice)
-                #enemy attacks
-            elif fightChoice == "2":
+        if fightChoice == "1": 
+            heroChoice.damageH(vilainChoice)
+            vilainChoice.damageH(heroChoice)
+        elif fightChoice == "2":
                 heroChoice.printStats()
-            elif heroChoice == "3":
+        elif fightChoice == "3":
                 GameStart()  
-            elif heroChoice == "4":
-                quit()
-            else:
-                print('Please only choose from the options below!')
-        print(f"{heroChoice.name} has won the battle!!")
-        #
-        playAgain = input("""Want to play again?  Y/N
-        -->""")
-        if playAgain.upper() == "Y":
-            GameStart()
-        elif playAgain.upper() == "N":
-            print("Good Bye")
+        elif fightChoice == "4":
+            print("Good Bye Hope to see you soon in Smashland")
             quit()
         else:
-            print('Please only choose from the options above')
-    
+            print('Please only choose from the options below!')
+    battleWinner(vilainChoice,heroChoice)
+    #
+    playAgain = input("""Want to play again?  Y/N
+    -->""")
+    if playAgain.upper() == "Y":
+        GameStart()
+    elif playAgain.upper() == "N":
+        print("Good Bye.. Hope to see you soon in SmashLand ")
+        quit()
+    else:
+        print('Please only choose from the options above')
+            
 
 
 def GameStart():
+    Hulk = Hero("hulk", 10, 50)
+    Batman = Hero("batman", 8, 40)
+    Superman = Hero("superman", 9, 300)
+
+
+    Goblin = Vilain("goblin",9,15)
+    Zombie =  Vilain("zombie",10,25)
+    Monster = Vilain("monster",12, 30)
+    
+
+    #create our Heroes + Vilains object List
+
+    Heroes = [Hulk,Batman,Superman]
+    Vilains = [Goblin, Zombie, Monster]
     print(" Welcome to SuperHeroes Smackdown!!")
     print("This is the list of playable characters")
+
     for hero in Heroes:
         print(hero.name)
     heroChoice = input("""who do you want to play as?
